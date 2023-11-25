@@ -26,10 +26,12 @@ export default function Home() {
         console.log("masuk firebase"+poopTally)
     }
     function remTally() {
-        if(poopTally >0) {
+        if(poopTally > 0) {
             setPoopTally(poopTally-1);
             set(ref(db, '/'+day), poopTally);
             console.log("masuk firebase"+poopTally)
+        } else {
+            alert("wdym?");
         }
     }
 
