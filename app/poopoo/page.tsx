@@ -12,10 +12,8 @@ export default function Home() {
 
     useEffect(() => {
         console.log(day);
-        const tally = ref(db, '/23/11/25');
-        console.log("he")
+        const tally = ref(db, day);
         onValue(tally, (snapshot) => {
-            console.log("ho");
             const data = snapshot.val();
             console.log(data+"DATA");
             setPoopTally(data)
@@ -28,9 +26,11 @@ export default function Home() {
         console.log("masuk firebase"+poopTally)
     }
     function remTally() {
-        setPoopTally(poopTally-1);
-        set(ref(db, '/'+day), poopTally);
-        console.log("masuk firebase"+poopTally)
+        if(poopTally >0) {
+            setPoopTally(poopTally-1);
+            set(ref(db, '/'+day), poopTally);
+            console.log("masuk firebase"+poopTally)
+        }
     }
 
   return (
